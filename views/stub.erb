@@ -5,7 +5,7 @@
 <tr>
 <th>key</th>
 <th>Description</th>
-<th>json</th>
+<th>response</th>
 </tr>
 <% c["fixtures"].each do |f| %>
 <tr>
@@ -22,13 +22,17 @@
 <tr>
 <th>Routing</th>
 <th>Description</th>
-<th>json</th>
+<th>response</th>
 </tr>
 <% @fixtures.each do |f| %>
 <tr>
     <td><%= f["route"] %></td>
     <td><%= f["description"] %></td>
+    <% if f["url"] %>
+    <td><a href="<%= f["url"] %>"><%= f["url"] %></a> </td>
+    <% else %>
     <td><a href="<%= f["route_sample"] + "?__mode=json5" %>">json5</a> | <a href="<%= f["route_sample"] %>">json</a></td>
+    <% end %>
 </tr>
 <% end %> 
 </table>

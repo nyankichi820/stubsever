@@ -85,8 +85,8 @@ end
 
 def record_request(request)
     begin
-        FileUtils.mkdir_p(RECORD_PATH)
-        file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20];
+        FileUtils.mkdir_p(RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20]);
+        file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20] + "/request.log";
         log = [
                 "ENV:",
                 JSON.pretty_generate(request.env),
@@ -108,19 +108,20 @@ end
 def record_response(request,response_body)
     begin
         json_object = JSON.load(response_body)
-        FileUtils.mkdir_p(RECORD_PATH)
-        file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20];
+        FileUtils.mkdir_p(RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20]);
+        file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20] + "/response.log";
         log = [
                 "ENV:",
                 JSON.pretty_generate(request.env),
                 "REQUEST:",
                 request.request_method + " " + request.url,
                 request.body.read ,
-                "REPONSE:",
-                JSON.pretty_generate(json_object)
         ].join("\n")
-    
         File.write(file,log)
+
+        file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20] + "/response.json";
+        File.write(file,JSON.pretty_generate(json_object))
+
         File.open(RECORD_PATH + "all.log","a"){|file|
             file.puts Date.today.strftime("---- DATE: %Y-%m-%d %H:%M:%S --------------")
             file.puts log
