@@ -19,19 +19,23 @@ $stdout.sync = true
 
 fixture_config = YAML.load_file(File.dirname(__FILE__) + "/config/fixture.yml")
 fixture_config["fixtures"].each{|v|
-    get v["route"] do 
-       if v["url"] 
-          proxy_request(lambda{ HTTPClient.new.get(v["url"]  + "?" + request.query_string,nil,parse_headers(request)) })
-          break
-       end
-       if v["status_code"] 
-            status v["status_code"]
-       end
-       puts "start fixture"
-       body = fixture(v["file"])
-       puts "end fixture"
-       record_response(request,body)
-       body
+    if v["method"] 
+      case v["method"] 
+      when "get"
+        get v["route"] do stub_response(v) end
+      when "post"
+        post v["route"] do stub_response(v) end
+      when "put"
+        put v["route"] do stub_response(v) end
+      when "delete"
+        delete v["route"] do stub_response(v) end
+      when "patch"
+        patch v["route"] do stub_response(v) end
+      else
+        get v["route"] do stub_response(v) end
+      end    
+    else 
+        get v["route"] do stub_response(v) end
     end
 }
 
@@ -53,7 +57,23 @@ get '/stub' do
     erb :stub
 end
 
+
 # proxy and recording 
+
+def stub_response(v)
+   if v["url"] 
+      proxy_request(lambda{ HTTPClient.new.get(v["url"]  + "?" + request.query_string,nil,parse_headers(request)) })
+      return 
+   end
+   if v["status_code"] 
+        status v["status_code"]
+   end
+   puts "start fixture"
+   body = fixture(v["file"])
+   puts "end fixture"
+   record_response(request,body)
+   body
+end
 
 def fixture(file)
     lines =  File.read(FIXTURE_PATH + file + ".json")
