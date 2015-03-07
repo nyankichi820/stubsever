@@ -107,7 +107,6 @@ end
 
 def record_response(request,response_body)
     begin
-        json_object = JSON.load(response_body)
         FileUtils.mkdir_p(RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20]);
         file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20] + "/response.log";
         log = [
@@ -119,8 +118,11 @@ def record_response(request,response_body)
         ].join("\n")
         File.write(file,log)
 
-        file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20] + "/response.json";
-        File.write(file,JSON.pretty_generate(json_object))
+        if params[:__mode] != "json5"
+          file = RECORD_PATH + request.path_info.gsub("/","_").gsub(/^_/,"") + "?" + request.query_string[0,20] + "/response.json";
+          json_object = JSON.load(response_body)
+          File.write(file,JSON.pretty_generate(json_object))
+        end 
 
         File.open(RECORD_PATH + "all.log","a"){|file|
             file.puts Date.today.strftime("---- DATE: %Y-%m-%d %H:%M:%S --------------")

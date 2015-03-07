@@ -10,4 +10,4 @@ definitions:
       - route: /stub/page_1
         route_sample: /stub/page_1
         description : 
-        file : sample1
+        file : sample

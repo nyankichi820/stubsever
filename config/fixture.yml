@@ -4,9 +4,9 @@ fixtures:
     description : stub sample
     file : sample
   - route: /google
-    route_sample: /stub/sample
-    description : stub sample
-    url : http://www.google.com
+    route_sample: /google
+    description : google stub
+    url : https://www.google.com/
   - route: /sample/error
     route_sample: /sample/error
     description : error response
