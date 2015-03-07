@@ -1,0 +1,64 @@
+.pager-display {
+    padding: 5px 0;
+    border-bottom: 1px solid $brand-gray;
+    text-align: center;
+    color: #99a1a7;
+}
+
+.nav-pager {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.nav-pager li,
+.nav-pager a{
+    display:inline-block
+}
+
+.pager-direct {
+    a,span {
+        @include size(23px);
+        @include border-radius(2px);
+        line-height: 23px;
+        display:inline-block;
+        margin-right: 5px;
+        font-weight: bold;
+    }
+    .current {
+        background-color: $brand-gray;
+    }
+}
+
+.pager-steps{
+    font-size:14px;
+    a,
+    span {
+        @include border-box;
+        display:block;
+        width:98px;
+        margin-right:8px;
+        border-radius:3px;
+        color: $brand-white;
+        background: $brand-green;
+        &.disabled {
+            visibility: hidden;
+        }
+    }
+    li:last-child a {
+        margin-right:0;
+    }
+    .prev,
+    .next {
+        line-height: 28px;
+    }
+    .go,
+    .back {
+        @include border-box;
+        display:inline-block;
+        width: 34px;
+        background-color: $brand-white;
+        border: 1px solid $brand-green;
+        line-height:26px;
+    }
+}

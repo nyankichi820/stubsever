@@ -1,0 +1,25 @@
+{
+  "name": "stubserver",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stubserver/stubserver.git"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-connect-proxy": "^0.1.10",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compass": "~0.7.1",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-sass": "~0.7.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "jquery": "~2.1.0",
+    "load-grunt-tasks": "~0.4.0",
+    "underscore": "~1.6.0"
+  }
+}

@@ -1,0 +1,15 @@
+.global-header {
+    background-color: #000;
+    height: 70px;
+}
+
+@media (max-width: 767px) {
+    .global-header {
+        > .inner {
+            width: 100%;
+        }
+        .logo {
+            margin-left: 10px;
+        }
+    }
+}

@@ -1,0 +1,172 @@
+/*
+MIXINS
+---------------------------------------------------------------------------*/
+/* prefix */
+@mixin prefixed($property, $property-value) {
+    @if $support-webkit { -webkit-#{$property}: #{$property-value};}
+    @if $support-mozilla { -moz-#{$property}: #{$property-value};}
+    @if $support-opera { -o-#{$property}: #{$property-value};}
+    @if $support-ms { -ms-#{$property}: #{$property-value};}
+    #{$property}: #{$property-value};
+}
+
+/* size */
+@mixin size($width, $height: false) {
+    @if not $height {
+        $height : $width;
+    }
+    width: $width;
+    height: $height;
+}
+
+/* position: absolute */
+@mixin ab-t-l($top: 0, $left: 0) {
+    position: absolute;
+    top: $top + px;
+    left: $left + px;
+}
+
+@mixin ab-t-r($top: 0, $right: 0) {
+    position: absolute;
+    top: $top + px;
+    right: $right + px;
+}
+
+@mixin ab-b-l($bottom: 0, $left: 0) {
+    position: absolute;
+    bottom: $bottom + px;
+    left: $left + px;
+}
+
+@mixin ab-b-r($bottom: 0, $right: 0) {
+    position: absolute;
+    bottom: $bottom + px;
+    right: $right + px;
+}
+
+@mixin text-shadow-black($opacity: .15){
+    text-shadow: 0 1px 0 rgba(#000, $opacity);
+}
+
+@mixin text-shadow-white($opacity: .3){
+    text-shadow: 0 1px 0 rgba($brand-white, $opacity);
+}
+
+/* box */
+@mixin box {
+    @if $support-webkit { display: -webkit-box;}
+    @if $support-mozilla { display: -moz-box;}
+    @if $support-opera { display: -o-box;}
+    @if $support-ms { display: -ms-box}
+    display: box;
+}
+
+@mixin box-flex {
+    @include prefixed(box-flex, 1);
+    width: 100%;
+}
+
+@mixin box-o-v {
+    @include prefixed(box-orient, vertical);
+}
+
+@mixin box-o-h {
+    @include prefixed(box-orient, horizontal);
+}
+
+@mixin box-p-s {
+    @include prefixed(box-pack, start);
+}
+
+@mixin box-p-c {
+    @include prefixed(box-pack, center);
+}
+
+@mixin box-p-e {
+    @include prefixed(box-pack, end);
+}
+
+@mixin box-p-j {
+    @include prefixed(box-pack, justify);
+}
+
+@mixin box-a-s {
+    @include prefixed(box-align, start);
+}
+
+@mixin box-a-c {
+    @include prefixed(box-align, center);
+}
+
+@mixin box-a-e {
+    @include prefixed(box-align, end);
+}
+
+@mixin border-box {
+    @include prefixed(box-sizing, border-box);
+}
+
+@mixin border-radius($property) {
+    @include prefixed(border-radius, $property);
+}
+
+/* background */
+@mixin bg-stripe($color1, $color2) {
+    background-image: -webkit-gradient(
+        linear, 0 0, 100% 100%,
+        color-stop(.25, $color1), 
+        color-stop(.25, $color2),
+        color-stop(.5, $color2),
+        color-stop(.5, $color1),
+        color-stop(.75, $color1),
+        color-stop(.75, $color2),
+        to($color2));
+    background-size: 20px 20px;
+    -webkit-background-size: 20px 20px;
+}
+
+/* animations */
+@mixin keyframe ($animation-name) {
+    @if $support-webkit { 
+        @-webkit-keyframes $animation-name {
+            @content;
+        }
+    }
+
+    @if $support-mozilla {
+        @-moz-keyframes $animation-name {
+            @content;
+        }
+    }
+
+    @keyframes $animation-name {
+        @content;
+    }
+}
+
+@mixin animation ($delay, $duration, $animation, $fill-mode, $iteration, $timing:'linear') {
+    @if $support-webkit { 
+        -webkit-animation-delay: $delay;
+        -webkit-animation-duration: $duration;
+        -webkit-animation-name: $animation;
+        -webkit-animation-fill-mode: $fill-mode;
+        -webkit-animation-iteration-count: $iteration;
+        -webkit-animation-timing-function: $timing;
+    }
+
+    @if $support-mozilla { 
+        -moz-animation-delay: $delay;
+        -moz-animation-duration: $duration;
+        -moz-animation-name: $animation;
+        -moz-animation-fill-mode: $fill-mode;
+        -moz-animation-iteration-count: $iteration;
+        -moz-animation-timing-function: $timing;
+    }
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: $fill-mode;
+    animation-iteration-count: $iteration;
+    animation-timing-function: $timing;
+}

@@ -1,0 +1,58 @@
+.global-header{
+    background-color: $brand-header;
+    height:40px;
+}
+
+h1{
+    text-align:left;
+    padding:10px;
+    font-size:12px;
+    color:white;
+    height:50px;
+}
+
+h2{
+    margin-top:15px;
+    text-align:center;
+    font-size:20px;
+    height:24px;
+    margin-bottom:15px;
+}
+
+h3{
+    text-align:left;
+    font-size:14px;
+    height:20px;
+    margin-bottom:5px;
+    padding:10px;
+    border-left:4px solid $brand-header;
+    background-color:white;
+}
+
+body{
+    font-size:10px;
+    color: $brand-black;
+    background-color: $brand-gray;
+}
+
+.main-container{
+    width:90%;
+    margin: 10px auto;
+}
+
+table{
+    width:100%;
+    background-color: white;
+    margin: 10px auto 10px auto;
+    border: 1px solid $brand-darkgray;
+}
+
+th{
+    padding:10px 15px 10px 15px;
+    border: 1px solid $brand-darkgray;
+}
+
+td{
+    border: 1px solid $brand-darkgray;
+    padding:10px 15px 10px 15px;
+}

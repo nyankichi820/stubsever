@@ -1,0 +1,14 @@
+fixtures:
+  - route: /stub/sample
+    route_sample: /stub/sample
+    description : stub sample
+    file : sample
+  - route: /google
+    route_sample: /stub/sample
+    description : stub sample
+    url : http://www.google.com
+  - route: /sample/error
+    route_sample: /sample/error
+    description : error response
+    status_code  : 400 
+    file : error

@@ -1,0 +1,21 @@
+{
+  "name": "stubserver",
+  "version": "0.0.1",
+  "authors": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/web/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0"
+  },
+  "resolutions": {
+    "underscore": "~1.5.1",
+    "jquery": "~2.1.0"
+  }
+}

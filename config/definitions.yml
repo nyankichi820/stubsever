@@ -1,0 +1,13 @@
+definitions:
+  - description: API COMMONS
+    fixtures:
+      - route: /stub/api_response
+        route_sample: /stub/api_response
+        description : API RESPONSE共通フォーマット
+        file : api_response_sample
+  - description: PAGE
+    fixtures:
+      - route: /stub/page_1
+        route_sample: /stub/page_1
+        description : 
+        file : sample1

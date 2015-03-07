@@ -1,0 +1,34 @@
+<h2>Structure Definitions</h2>
+<% @definitions.each do |c| %>
+<h3>Category:<%= c["description"] %></h3>
+<table>
+<tr>
+<th>key</th>
+<th>Description</th>
+<th>json</th>
+</tr>
+<% c["fixtures"].each do |f| %>
+<tr>
+    <td><%= f["route"] %></td>
+    <td><%= f["description"] %></td>
+    <td><a href="<%= f["route_sample"] + "?__mode=json5" %>">json5</a> | <a href="<%= f["route_sample"] %>">json</a></td>
+</tr>
+<% end %> 
+</table>
+<% end %> 
+
+<h2>All fixtures</h2>
+<table>
+<tr>
+<th>Routing</th>
+<th>Description</th>
+<th>json</th>
+</tr>
+<% @fixtures.each do |f| %>
+<tr>
+    <td><%= f["route"] %></td>
+    <td><%= f["description"] %></td>
+    <td><a href="<%= f["route_sample"] + "?__mode=json5" %>">json5</a> | <a href="<%= f["route_sample"] %>">json</a></td>
+</tr>
+<% end %> 
+</table>
