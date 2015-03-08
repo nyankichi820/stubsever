@@ -5,6 +5,8 @@ gem 'json5'
 gem 'oj'
 gem 'sass'
 gem 'compass'
+gem 'ffaker'
+gem 'faker-japanese'
 group :development, :test do
     gem 'rspec'
     gem 'rack-test'

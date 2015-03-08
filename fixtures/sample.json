@@ -4,6 +4,14 @@
      // quote いらないお！！
      title : "タイトル",
      // 下記のような記述で定義からサンプルデータを読み込めます
-     lists : <%= fixture("lists_sample") %>
+     lists : <%= fixture("lists_sample") %>,
+     user : {
+      name : "<%= Faker::Japanese::Name.name %>",
+     },
+     post : {
+        title : "<%= Faker::Lorem.sentence(3) %>",
+        body : "<%= Faker::Lorem.sentence(20) %>",
+     }
+    
   }
 }

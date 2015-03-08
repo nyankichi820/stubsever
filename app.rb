@@ -6,6 +6,8 @@ require 'json5'
 require 'json'
 require 'yaml'
 require 'oj'
+require 'ffaker'
+require 'faker/japanese'
 
 FIXTURE_PATH = File.dirname(__FILE__) + "/fixtures/"
 config = YAML.load_file(File.dirname(__FILE__) + "/config/config.yml")
