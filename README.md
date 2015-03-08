@@ -66,6 +66,14 @@ config/fixture.ymlにstubしたいリクエストの設定を書くことでjson
     // 下記のような記述で定義からサンプルデータを読み込めます
     lists : <%= fixture("lists_sample") %>
   }, // ケツカンマおっけ
+  // fakerでのサンプルの作成が可能です
+  user : {
+    name : "<%= Faker::Japanese::Name.name %>",
+  },
+  post : {
+    title : "<%= Faker::Lorem.sentence(3) %>",
+    body : "<%= Faker::Lorem.sentence(20) %>",
+  }
 }
 ```
 
