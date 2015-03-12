@@ -108,3 +108,6 @@ stubしないリクエストは直接ORIGIN_URLに指定したサーバーへリ
 これらのファイルをcopyして再利用することにより,stubデータに使用できます。
 
 
+#### default server
+stubしないリクエストがプロキシされるデフォルトのURLは
+`config/config.yml` の `origin_url: URL` で指定します。
