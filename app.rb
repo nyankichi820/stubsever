@@ -95,7 +95,7 @@ def parse_headers(request)
                                      k.start_with?('HTTP_') && k != "HTTP_ACCEPT_ENCODING" }
                                .map { |k,v| [ k.gsub(/^HTTP_/,"")
                                     .downcase.gsub(/(^|_)\w/) { |word| word.upcase }
-                                    .gsub("_", "-") , v
+                                    .gsub("_", "-") , k == 'HTTP_HOST' ? ORIGIN_URL.gsub(/^https?:\/\//, '').gsub(/\/?$/, '') : v
                                 ] }
     return http_headers
 end
